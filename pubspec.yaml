@@ -26,6 +26,7 @@ dev_dependencies:
     git:
       url: https://github.com/defuncart/fork_intl_utils
       ref: feature/ignore-avoid_catches_without_on_clauses-always_use_package_imports-generated-code
+  build_runner:
   hive_generator:
 
 flutter:
