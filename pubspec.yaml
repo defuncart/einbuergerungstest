@@ -13,7 +13,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons:
-  archive: 3.1.6
+  archive:
+  hive:
+  path_provider:
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +26,7 @@ dev_dependencies:
     git:
       url: https://github.com/defuncart/fork_intl_utils
       ref: feature/ignore-avoid_catches_without_on_clauses-always_use_package_imports-generated-code
+  hive_generator:
 
 flutter:
   uses-material-design: true
