@@ -1,0 +1,45 @@
+name: einbuergerungstest
+description: An application to help prepare for the German Einbürgerungstest.
+publish_to: 'none'
+version: 0.0.1+1
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+  flutter: ">=2.5.0 < 3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons:
+  archive: 3.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  arb_generator:
+  intl_utils: #^2.3.0
+    git:
+      url: https://github.com/defuncart/fork_intl_utils
+      ref: feature/ignore-avoid_catches_without_on_clauses-always_use_package_imports-generated-code
+
+flutter:
+  uses-material-design: true
+
+arb_generator:
+  input_filepath: "assets_dev/loca/loca.csv"
+  output_directory: "assets_dev/l10n"
+  filename_prepend: "intl_"
+  csv_settings:
+    delimiter: ";"
+    description_index: 1
+    base_index: 2
+
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations
+  main_locale: de
+  arb_dir: assets_dev/l10n
+  output_dir: lib/generated

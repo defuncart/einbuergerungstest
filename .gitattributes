@@ -1,0 +1,3 @@
+# Determine what files GitHub will mark as generated in PRs
+# https://thoughtbot.com/blog/github-diff-supression
+assets_dev/loca/loca.csv linguist-generated=true
