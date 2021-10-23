@@ -3,3 +3,4 @@ homeScreenDashboardLabel;Label for dashboard item;Dashboard
 homeScreenFavoritesLabel;Label for favorites item;Merkliste
 homeScreenTipsLabel;Label for tips item;Tipps
 homeScreenProgressLabel;Label for progress item;Vorschritt
+homeScreenTestButtonText;Button text for test FAB;Test

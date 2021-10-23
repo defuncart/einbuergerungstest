@@ -81,6 +81,16 @@ class AppLocalizations {
     );
   }
 
+  /// `Test`
+  String get homeScreenTestButtonText {
+    return Intl.message(
+      'Test',
+      name: 'homeScreenTestButtonText',
+      desc: 'Button text for test FAB',
+      args: [],
+    );
+  }
+
   /// `Tipps`
   String get homeScreenTipsLabel {
     return Intl.message(

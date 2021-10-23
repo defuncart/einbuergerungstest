@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Merkliste"),
         "homeScreenProgressLabel":
             MessageLookupByLibrary.simpleMessage("Vorschritt"),
+        "homeScreenTestButtonText":
+            MessageLookupByLibrary.simpleMessage("Test"),
         "homeScreenTipsLabel": MessageLookupByLibrary.simpleMessage("Tipps")
       };
 }
