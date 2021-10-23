@@ -16,6 +16,8 @@ dependencies:
   archive:
   hive:
   path_provider:
+  riverpod: ^1.0.0-dev.10
+  flutter_riverpod:
 
 dev_dependencies:
   flutter_test:

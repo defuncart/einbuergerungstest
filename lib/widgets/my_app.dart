@@ -1,20 +1,21 @@
 import 'package:einbuergerungstest/generated/l10n.dart';
-import 'package:einbuergerungstest/services/question_database/hive_question_database.dart';
+import 'package:einbuergerungstest/state/state.dart';
 import 'package:einbuergerungstest/widgets/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends ConsumerState<MyApp> {
   late Future<bool> _initAppFuture;
 
   @override
@@ -28,8 +29,7 @@ class _MyAppState extends State<MyApp> {
     final dir = (await getApplicationDocumentsDirectory()).path;
     Hive.init(dir);
 
-    // TODO move to state
-    final database = HiveQuestionDatabase();
+    final database = ref.read(questionDatabaseProvider);
     await database.initialize();
 
     return true;
