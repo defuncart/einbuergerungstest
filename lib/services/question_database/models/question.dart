@@ -7,7 +7,7 @@ part 'question.g.dart';
 
 @HiveType(typeId: 1)
 class Question extends HiveObject {
-  /// A unique id for teh question
+  /// A unique id for the question
   @HiveField(0)
   final String id;
 
