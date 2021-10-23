@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:einbuergerungstest/services/question_database/enums/question_type.dart';
 import 'package:einbuergerungstest/services/question_database/i_question_database.dart';
 import 'package:einbuergerungstest/services/question_database/models/question.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -50,12 +49,7 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   }
 
   Future<String> get _deviceFilepath async {
-    var dir = '';
-    if (!kIsWeb) {
-      dir = (await getApplicationDocumentsDirectory()).path;
-      Hive.init(dir);
-    }
-
+    final dir = (await getApplicationDocumentsDirectory()).path;
     return '$dir/questions.hive';
   }
 }

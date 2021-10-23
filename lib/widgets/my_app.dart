@@ -4,6 +4,8 @@ import 'package:einbuergerungstest/widgets/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -23,6 +25,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<bool> _initApp() async {
+    final dir = (await getApplicationDocumentsDirectory()).path;
+    Hive.init(dir);
+
     // TODO move to state
     final database = HiveQuestionDatabase();
     await database.initialize();
