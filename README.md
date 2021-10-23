@@ -13,8 +13,6 @@ To build the app locally, the following tools are required:
 - iOS, macOS:
     - Xcode >= 12.4
     - CocoaPods >= 1.11.0
-- Web:
-    - Chrome
 
 ## Code Generation
 
@@ -28,7 +26,7 @@ sh bin/loca_generate.sh
 
 ## Credits
 
-This application is developed for personal use. It uses the official questions and images from 
+This application is developed for personal use. It uses the official questions and images from Berlin's Einbürgerungstest.
 
 ## Raising Issues and Contributing
 

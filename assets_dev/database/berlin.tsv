@@ -1,0 +1,11 @@
+id	question	a1	a2	a3	a4	answerIndex	isReordable	hasImage
+berlin1	Welches Wappen gehört zum Bundesland Berlin?	1	2	3	4	3	0	1
+berlin2	Welches ist ein Bezirk von Berlin?	Altona	Prignitz	Pankow	Mecklenburgische Seenplatte	2		
+berlin3	Für wie viele Jahre wird das Landesparlament in Berlin gewählt?	3	4	5	6	2	0	
+berlin4	Ab welchem Alter darf man in Berlin bei Kommunalwahlen (Wahl der Bezirksverordnetenversammlung) wählen?	14	16	18	20	1	0	
+berlin5	Welche Farben hat die Landesflagge von Berlin?	blau-weiß-rot	weiß-rot	grün-weiß-rot	schwarz-gold	1		
+berlin6	Wo können Sie sich in Berlin über politische Themen informieren?	beim Ordnungsamt der Gemeinde	bei den Kirchen	bei der Verbraucherzentrale	bei der Landeszentrale für politische Bildung	3		
+berlin7	Welches Bundesland ist ein Stadtstaat?	Berlin	Saarland	Brandenburg	Hessen	0		
+berlin8	Welches Bundesland ist Berlin?	1	2	3	4	3	0	1
+berlin9	Wie nennt man den Regierungschef / die Regierungschefin des Stadtstaates Berlin?	Ministerpräsident / Ministerpräsidentin	Oberbürgermeister / Oberbürgermeisterin	Präsident / Präsidentin des Senats	Regierender Bürgermeister / Regierende Bürgermeisterin	3		
+berlin10	Welchen Senator / welche Senatorin hat Berlin nicht?	Finanzsenator / Finanzsenatorin	Innensenator / Innensenatorin	Senator / Senatorin für Außenbeziehungen	Justizsenator / Justizsenatorin	2		
