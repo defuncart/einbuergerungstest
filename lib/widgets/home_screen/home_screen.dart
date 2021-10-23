@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
             case 3:
               return const ProgressTab();
             default:
-              return const DashboardTab();
+              return const DashboardTabConsumer();
           }
         },
       ),
