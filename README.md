@@ -28,7 +28,7 @@ sh bin/loca_generate.sh
 
 ## Credits
 
-This application is developed for personal use. It uses the official questions and images from 
+This application is developed for personal use. It uses the official questions and images from Berlin's Einbürgerungstest.
 
 ## Raising Issues and Contributing
 
