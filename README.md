@@ -13,8 +13,6 @@ To build the app locally, the following tools are required:
 - iOS, macOS:
     - Xcode >= 12.4
     - CocoaPods >= 1.11.0
-- Web:
-    - Chrome
 
 ## Code Generation
 
