@@ -24,13 +24,17 @@ class QuestionAdapter extends TypeAdapter<Question> {
       correctAnswerIndex: fields[4] as int,
       hasImage: fields[5] as bool,
       canBeReordered: fields[6] as bool,
-    );
+    )
+      .._attempts = fields[7] as int
+      .._timesCorrect = fields[8] as int
+      .._isFavorite = fields[9] as bool
+      .._lastAnswered = fields[10] as DateTime?;
   }
 
   @override
   void write(BinaryWriter writer, Question obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +48,15 @@ class QuestionAdapter extends TypeAdapter<Question> {
       ..writeByte(5)
       ..write(obj.hasImage)
       ..writeByte(6)
-      ..write(obj.canBeReordered);
+      ..write(obj.canBeReordered)
+      ..writeByte(7)
+      ..write(obj._attempts)
+      ..writeByte(8)
+      ..write(obj._timesCorrect)
+      ..writeByte(9)
+      ..write(obj._isFavorite)
+      ..writeByte(10)
+      ..write(obj._lastAnswered);
   }
 
   @override
