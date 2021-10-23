@@ -51,12 +51,42 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `Einbürgerungstest`
-  String get test {
+  /// `Dashboard`
+  String get homeScreenDashboardLabel {
     return Intl.message(
-      'Einbürgerungstest',
-      name: 'test',
-      desc: 'test',
+      'Dashboard',
+      name: 'homeScreenDashboardLabel',
+      desc: 'Label for dashboard item',
+      args: [],
+    );
+  }
+
+  /// `Merkliste`
+  String get homeScreenFavoritesLabel {
+    return Intl.message(
+      'Merkliste',
+      name: 'homeScreenFavoritesLabel',
+      desc: 'Label for favorites item',
+      args: [],
+    );
+  }
+
+  /// `Vorschritt`
+  String get homeScreenProgressLabel {
+    return Intl.message(
+      'Vorschritt',
+      name: 'homeScreenProgressLabel',
+      desc: 'Label for progress item',
+      args: [],
+    );
+  }
+
+  /// `Tipps`
+  String get homeScreenTipsLabel {
+    return Intl.message(
+      'Tipps',
+      name: 'homeScreenTipsLabel',
+      desc: 'Label for tips item',
       args: [],
     );
   }
