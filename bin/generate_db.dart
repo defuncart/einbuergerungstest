@@ -45,7 +45,7 @@ Future<void> _parseFile(QuestionType type, Box<Question> box) async {
       correctAnswerIndex: int.parse(components[_Keys.answerIndex]),
       canBeReordered: components[_Keys.isReordable] != '0',
       hasImage: components[_Keys.hasImage] == '1',
-    );
+    )..reset();
 
     box.add(question);
   }
