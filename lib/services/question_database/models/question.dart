@@ -83,7 +83,10 @@ class Question extends HiveObject {
   }
 
   /// Updates the progress
-  set isFavorite(bool value) => _isFavorite = value;
+  set isFavorite(bool value) {
+    _isFavorite = value;
+    save();
+  }
 
   /// Resets the progress
   void reset() {
