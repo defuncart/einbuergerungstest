@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+dart pub get
+
 # enable arb_utils globally on machine
 # if already enabled, this will download latest version, if one is available
 dart pub global activate arb_utils

@@ -71,12 +71,12 @@ class AppLocalizations {
     );
   }
 
-  /// `Vorschritt`
-  String get homeScreenProgressLabel {
+  /// `Info`
+  String get homeScreenInfoLabel {
     return Intl.message(
-      'Vorschritt',
-      name: 'homeScreenProgressLabel',
-      desc: 'Label for progress item',
+      'Info',
+      name: 'homeScreenInfoLabel',
+      desc: 'Label for info item',
       args: [],
     );
   }
