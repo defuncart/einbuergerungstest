@@ -25,12 +25,17 @@ class QuestionPopover extends StatelessWidget {
   static Future<void> show(
     BuildContext context, {
     required Question question,
-  }) =>
-      showDialog(
-        context: context,
-        useSafeArea: false,
-        builder: (context) => QuestionPopover(question: question),
-      );
+  }) {
+    if (!question.hasBeenSeen) {
+      question.setBeenHasSeen();
+    }
+
+    return showDialog(
+      context: context,
+      useSafeArea: false,
+      builder: (context) => QuestionPopover(question: question),
+    );
+  }
 }
 
 class QuestionPanel extends StatelessWidget {
