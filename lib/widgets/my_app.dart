@@ -16,50 +16,28 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class _MyAppState extends ConsumerState<MyApp> {
-  late Future<bool> _initAppFuture;
+  var _isInitialized = false;
 
   @override
   void initState() {
     super.initState();
 
-    _initAppFuture = _initApp();
+    _initApp();
   }
 
-  Future<bool> _initApp() async {
+  Future<void> _initApp() async {
     final dir = (await getApplicationDocumentsDirectory()).path;
     Hive.init(dir);
 
-    final database = ref.read(questionDatabaseProvider);
-    await database.initialize();
+    await ref.read(questionDatabaseProvider).initialize();
 
-    return true;
+    setState(() => _isInitialized = true);
   }
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: FutureBuilder(
-        future: _initAppFuture,
-        // ignore: avoid_types_on_closure_parameters
-        builder: (_, AsyncSnapshot<bool> snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-            case ConnectionState.active:
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              );
-            default:
-              if (snapshot.connectionState == ConnectionState.done && snapshot.hasData && snapshot.data == true) {
-                return const MyAppContent();
-              }
-            //TODO else show error
-          }
-
-          return const SizedBox.shrink();
-        },
-      ),
+      child: _isInitialized ? const MyAppContent() : const SizedBox.shrink(),
     );
   }
 }
