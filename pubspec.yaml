@@ -16,7 +16,6 @@ dependencies:
   archive:
   hive:
   path_provider:
-  flutter_staggered_grid_view:
   riverpod: ^1.0.0-dev.10
   flutter_riverpod:
 
