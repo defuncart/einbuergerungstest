@@ -7,11 +7,13 @@ class QuestionsList extends StatelessWidget {
   const QuestionsList({
     required this.questions,
     this.showQuestionNumber = false,
+    this.shouldReduceOpacitySeenQuestion = false,
     Key? key,
   }) : super(key: key);
 
   final List<Question> questions;
   final bool showQuestionNumber;
+  final bool shouldReduceOpacitySeenQuestion;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class QuestionsList extends StatelessWidget {
         itemBuilder: (context, index) => QuestionTile(
           question: questions[index],
           questionNumber: showQuestionNumber ? index + 1 : null,
+          shouldReduceOpacitySeenQuestion: shouldReduceOpacitySeenQuestion,
         ),
       ),
     );
@@ -32,19 +35,21 @@ class QuestionTile extends StatelessWidget {
   const QuestionTile({
     required this.question,
     this.questionNumber,
+    this.shouldReduceOpacitySeenQuestion = false,
     Key? key,
   }) : super(key: key);
 
   final Question question;
   final int? questionNumber;
+  final bool shouldReduceOpacitySeenQuestion;
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: 1.0,
+      opacity: shouldReduceOpacitySeenQuestion && question.hasBeenSeen ? 0.5 : 1.0,
       child: ListTile(
-        leading: questionNumber != null ? Text(questionNumber!.toString()) : null,
-        title: Text(question.question),
+        minLeadingWidth: 20,
+        title: Text('${questionNumber != null ? '$questionNumber. ' : ''}${question.question}'),
         trailing: QuestionFavoriteButton(
           question: question,
         ),
