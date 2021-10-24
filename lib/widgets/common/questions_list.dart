@@ -2,44 +2,27 @@ import 'package:einbuergerungstest/services/question_database/models/question.da
 import 'package:einbuergerungstest/widgets/common/buttons/question_favorite_button.dart';
 import 'package:einbuergerungstest/widgets/common/question_popover.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class QuestionsList extends StatelessWidget {
   const QuestionsList({
     required this.questions,
+    this.showQuestionNumber = false,
     Key? key,
   }) : super(key: key);
 
   final List<Question> questions;
+  final bool showQuestionNumber;
 
   @override
   Widget build(BuildContext context) {
-    final colors = [
-      Colors.green[400]!,
-      Colors.purple[200]!,
-      Colors.blue[500]!,
-      Colors.red[400]!,
-    ];
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: ListView(
-        children: [
-          const SizedBox(height: 4),
-          StaggeredGridView.countBuilder(
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
-            itemCount: questions.length,
-            crossAxisCount: 4,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            itemBuilder: (context, index) => QuestionTile(
-              question: questions[index],
-              color: colors[index % colors.length],
-            ),
-            staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
-          ),
-        ],
+      child: ListView.builder(
+        itemCount: questions.length,
+        itemBuilder: (context, index) => QuestionTile(
+          question: questions[index],
+          questionNumber: showQuestionNumber ? index + 1 : null,
+        ),
       ),
     );
   }
@@ -48,58 +31,28 @@ class QuestionsList extends StatelessWidget {
 class QuestionTile extends StatelessWidget {
   const QuestionTile({
     required this.question,
-    required this.color,
-    this.showFavoriteButton = false,
+    this.questionNumber,
     Key? key,
   }) : super(key: key);
 
   final Question question;
-  final Color color;
-  final bool showFavoriteButton;
+  final int? questionNumber;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        Material(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          elevation: 2,
-          child: GestureDetector(
-            onTap: () => QuestionPopover.show(
-              context,
-              question: question,
-            ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  color: color,
-                ),
-                child: Text(
-                  question.question,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                  // softWrap: true,
-                  textScaleFactor: 1,
-                  style: Theme.of(context).textTheme.headline5?.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-              ),
-            ),
-          ),
+    return Opacity(
+      opacity: 1.0,
+      child: ListTile(
+        leading: questionNumber != null ? Text(questionNumber!.toString()) : null,
+        title: Text(question.question),
+        trailing: QuestionFavoriteButton(
+          question: question,
         ),
-        Visibility(
-          visible: showFavoriteButton,
-          child: QuestionFavoriteButton(
-            question: question,
-          ),
+        onTap: () => QuestionPopover.show(
+          context,
+          question: question,
         ),
-      ],
+      ),
     );
   }
 }

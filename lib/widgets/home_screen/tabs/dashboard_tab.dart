@@ -28,6 +28,7 @@ class DashboardTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return QuestionsList(
       questions: questions,
+      showQuestionNumber: true,
     );
   }
 }

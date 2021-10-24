@@ -20,19 +20,66 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Builder(
-        builder: (context) {
-          switch (_currentIndex) {
-            case 1:
-              return const FavoritesTab();
-            case 2:
-              return const TipsTab();
-            case 3:
-              return const InfoTab();
-            default:
-              return const DashboardTabConsumer();
-          }
-        },
+      body: SafeArea(
+        child: /*Row(
+          children: <Widget>[
+            NavigationRail(
+              selectedIndex: _currentIndex,
+              onDestinationSelected: (index) => setState(() => _currentIndex = index),
+              labelType: NavigationRailLabelType.selected,
+              destinations: [
+                NavigationRailDestination(
+                  icon: const Icon(Icons.dashboard_outlined),
+                  selectedIcon: const Icon(Icons.dashboard),
+                  label: Text(AppLocalizations.of(context).homeScreenDashboardLabel),
+                ),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.favorite_outline),
+                  selectedIcon: const Icon(Icons.favorite),
+                  label: Text(AppLocalizations.of(context).homeScreenDashboardLabel),
+                ),
+                NavigationRailDestination(
+                  icon: const Icon(Icons.lightbulb_outline),
+                  selectedIcon: const Icon(Icons.lightbulb),
+                  label: Text(AppLocalizations.of(context).homeScreenDashboardLabel),
+                ),
+              ],
+            ),
+            const VerticalDivider(thickness: 1, width: 1),
+            // This is the main content.
+            Expanded(
+              child: Builder(
+                builder: (context) {
+                  switch (_currentIndex) {
+                    case 1:
+                      return const FavoritesTabConsumer();
+                    case 2:
+                      return const TipsTab();
+                    case 3:
+                      return const InfoTab();
+                    default:
+                      return const DashboardTabConsumer();
+                  }
+                },
+              ),
+            )
+          ],
+        ),
+      ),*/
+            Builder(
+          builder: (context) {
+            switch (_currentIndex) {
+              case 1:
+                return const FavoritesTabConsumer();
+              case 2:
+                return const TipsTab();
+              case 3:
+                return const InfoTab();
+              default:
+                return const DashboardTabConsumer();
+            }
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
