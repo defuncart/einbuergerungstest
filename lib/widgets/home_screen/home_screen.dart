@@ -1,7 +1,6 @@
 import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/dashboard_tab.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/favorites_tab.dart';
-import 'package:einbuergerungstest/widgets/home_screen/tabs/info_tab.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/tips_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -56,8 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             return const FavoritesTabConsumer();
                           case 2:
                             return const TipsTab();
-                          case 3:
-                            return const InfoTab();
                           default:
                             return const DashboardTabConsumer();
                         }
@@ -73,8 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       return const FavoritesTabConsumer();
                     case 2:
                       return const TipsTab();
-                    case 3:
-                      return const InfoTab();
                     default:
                       return const DashboardTabConsumer();
                   }

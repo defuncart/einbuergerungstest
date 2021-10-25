@@ -71,16 +71,6 @@ class AppLocalizations {
     );
   }
 
-  /// `Info`
-  String get homeScreenInfoLabel {
-    return Intl.message(
-      'Info',
-      name: 'homeScreenInfoLabel',
-      desc: 'Label for info item',
-      args: [],
-    );
-  }
-
   /// `Test`
   String get homeScreenTestButtonText {
     return Intl.message(
