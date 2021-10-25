@@ -9,13 +9,17 @@ class DashboardTabConsumer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final questions = ref.read(questionDatabaseProvider).allQuestions;
-    return DashboardTab(
-      questions: questions,
+    return StreamBuilder(
+      stream: ref.read(questionDatabaseProvider).watchAllQuestions,
+      initialData: ref.read(questionDatabaseProvider).allQuestions,
+      builder: (context, snapshot) => DashboardTab(
+        questions: snapshot.data as List<Question>,
+      ),
     );
   }
 }
 
+@visibleForTesting
 class DashboardTab extends StatelessWidget {
   const DashboardTab({
     required this.questions,
@@ -29,6 +33,7 @@ class DashboardTab extends StatelessWidget {
     return QuestionsList(
       questions: questions,
       showQuestionNumber: true,
+      shouldReduceOpacitySeenQuestion: true,
     );
   }
 }
