@@ -1,65 +1,43 @@
 import 'package:einbuergerungstest/generated/l10n.dart';
-import 'package:einbuergerungstest/services/question_database/hive_question_database.dart';
+import 'package:einbuergerungstest/state/state.dart';
 import 'package:einbuergerungstest/widgets/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  late Future<bool> _initAppFuture;
+class _MyAppState extends ConsumerState<MyApp> {
+  var _isInitialized = false;
 
   @override
   void initState() {
     super.initState();
 
-    _initAppFuture = _initApp();
+    _initApp();
   }
 
-  Future<bool> _initApp() async {
+  Future<void> _initApp() async {
     final dir = (await getApplicationDocumentsDirectory()).path;
     Hive.init(dir);
 
-    // TODO move to state
-    final database = HiveQuestionDatabase();
-    await database.initialize();
+    await ref.read(questionDatabaseProvider).initialize();
 
-    return true;
+    setState(() => _isInitialized = true);
   }
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: FutureBuilder(
-        future: _initAppFuture,
-        // ignore: avoid_types_on_closure_parameters
-        builder: (_, AsyncSnapshot<bool> snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-            case ConnectionState.active:
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              );
-            default:
-              if (snapshot.connectionState == ConnectionState.done && snapshot.hasData && snapshot.data == true) {
-                return const MyAppContent();
-              }
-            //TODO else show error
-          }
-
-          return const SizedBox.shrink();
-        },
-      ),
+      child: _isInitialized ? const MyAppContent() : const SizedBox.shrink(),
     );
   }
 }

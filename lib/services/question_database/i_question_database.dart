@@ -10,6 +10,15 @@ abstract class IQuestionDatabase {
   /// Returns all 310 questions
   List<Question> get allQuestions;
 
+  /// Returns a stream of all questions
+  Stream<List<Question>> get watchAllQuestions;
+
+  /// Returns the user's favorites
+  List<Question> get favorites;
+
+  /// Returns a stream of user favorites
+  Stream<List<Question>> get watchFavorites;
+
   /// Initializes the database
   Future<void> initialize();
 

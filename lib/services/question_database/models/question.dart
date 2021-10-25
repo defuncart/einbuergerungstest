@@ -47,16 +47,22 @@ class Question extends HiveObject {
   @HiveField(8)
   late int _timesCorrect;
 
-  /// Whether the noun is a favorite
+  /// Whether the question is a favorite
   bool get isFavorite => _isFavorite;
 
   @HiveField(9)
   late bool _isFavorite;
 
+  /// Whether the question has been seen (i.e. in a test or from dashboard)
+  bool get hasBeenSeen => _hasBeenSeen;
+
+  @HiveField(10)
+  late bool _hasBeenSeen;
+
   /// When the question was last answered
   DateTime? get lastAnswered => _lastAnswered;
 
-  @HiveField(10)
+  @HiveField(11)
   DateTime? _lastAnswered;
 
   Question({
@@ -79,17 +85,29 @@ class Question extends HiveObject {
       _timesCorrect++;
     }
     _lastAnswered = DateTime.now().toUtc();
+    if (!_hasBeenSeen) {
+      _hasBeenSeen = true;
+    }
     save();
   }
 
-  /// Updates the progress
-  set isFavorite(bool value) => _isFavorite = value;
+  /// Updates whether question is a favorite
+  set isFavorite(bool value) {
+    _isFavorite = value;
+    save();
+  }
+
+  void setBeenHasSeen() {
+    _hasBeenSeen = true;
+    save();
+  }
 
   /// Resets the progress
   void reset() {
     _attempts = 0;
     _timesCorrect = 0;
     _isFavorite = false;
+    _hasBeenSeen = false;
     _lastAnswered = null;
   }
 

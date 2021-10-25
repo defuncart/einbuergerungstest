@@ -25,6 +25,15 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   List<Question> get allQuestions => _box.values.toList();
 
   @override
+  Stream<List<Question>> get watchAllQuestions => _box.watch().map((event) => allQuestions);
+
+  @override
+  List<Question> get favorites => allQuestions.where((element) => element.isFavorite).toList();
+
+  @override
+  Stream<List<Question>> get watchFavorites => _box.watch().map((event) => favorites);
+
+  @override
   Future<void> initialize() async {
     Hive.registerAdapter(QuestionTypeAdapter());
     Hive.registerAdapter(QuestionAdapter());

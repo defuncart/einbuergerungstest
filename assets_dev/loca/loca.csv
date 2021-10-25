@@ -1,2 +1,5 @@
 key;description;de
-test;test;Einbürgerungstest
+homeScreenDashboardLabel;Label for dashboard item;Dashboard
+homeScreenFavoritesLabel;Label for favorites item;Merkliste
+homeScreenTipsLabel;Label for tips item;Tipps
+homeScreenTestButtonText;Button text for test FAB;Test

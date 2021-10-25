@@ -28,13 +28,14 @@ class QuestionAdapter extends TypeAdapter<Question> {
       .._attempts = fields[7] as int
       .._timesCorrect = fields[8] as int
       .._isFavorite = fields[9] as bool
-      .._lastAnswered = fields[10] as DateTime?;
+      .._hasBeenSeen = fields[10] as bool
+      .._lastAnswered = fields[11] as DateTime?;
   }
 
   @override
   void write(BinaryWriter writer, Question obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -56,6 +57,8 @@ class QuestionAdapter extends TypeAdapter<Question> {
       ..writeByte(9)
       ..write(obj._isFavorite)
       ..writeByte(10)
+      ..write(obj._hasBeenSeen)
+      ..writeByte(11)
       ..write(obj._lastAnswered);
   }
 
