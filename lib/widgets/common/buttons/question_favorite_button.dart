@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class QuestionFavoriteButton extends StatefulWidget {
   const QuestionFavoriteButton({
-    Key? key,
     required this.question,
+    Key? key,
   }) : super(key: key);
 
   final Question question;
