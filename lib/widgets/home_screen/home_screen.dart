@@ -48,32 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const VerticalDivider(thickness: 1, width: 1),
                   Expanded(
-                    child: Builder(
-                      builder: (context) {
-                        switch (_currentIndex) {
-                          case 1:
-                            return const FavoritesTabConsumer();
-                          case 2:
-                            return const TipsTab();
-                          default:
-                            return const DashboardTabConsumer();
-                        }
-                      },
+                    child: HomeScreenContent(
+                      index: _currentIndex,
                     ),
                   )
                 ],
               )
-            : Builder(
-                builder: (context) {
-                  switch (_currentIndex) {
-                    case 1:
-                      return const FavoritesTabConsumer();
-                    case 2:
-                      return const TipsTab();
-                    default:
-                      return const DashboardTabConsumer();
-                  }
-                },
+            : HomeScreenContent(
+                index: _currentIndex,
               ),
       ),
       bottomNavigationBar: MediaQuery.of(context).orientation == Orientation.portrait
@@ -106,6 +88,32 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Text(AppLocalizations.of(context).homeScreenTestButtonText),
       ),
+    );
+  }
+}
+
+@visibleForTesting
+class HomeScreenContent extends StatelessWidget {
+  const HomeScreenContent({
+    required this.index,
+    Key? key,
+  }) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (context) {
+        switch (index) {
+          case 1:
+            return const FavoritesTabConsumer();
+          case 2:
+            return const TipsTab();
+          default:
+            return const DashboardTabConsumer();
+        }
+      },
     );
   }
 }
