@@ -78,6 +78,9 @@ class Question extends HiveObject {
   /// If [hasImage], returns the image's path
   String? get imagePath => hasImage ? 'assets/images/$id.png' : null;
 
+  /// If the question has previously been incorrectly answered
+  bool get wasAnsweredIncorrectly => _timesCorrect < _attempts;
+
   /// Updates the progress
   void updateProgress({required bool answeredCorrectly}) {
     _attempts++;
