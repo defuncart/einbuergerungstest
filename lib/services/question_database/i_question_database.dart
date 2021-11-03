@@ -10,6 +10,12 @@ abstract class IQuestionDatabase {
   /// Returns all 310 questions
   List<Question> get allQuestions;
 
+  /// Returns questions for a quiz
+  ///
+  /// Firstly returns as many unseen questions, then as many difficult
+  /// and finally the rest are random
+  List<Question> get questionsForQuiz;
+
   /// Returns a stream of all questions
   Stream<List<Question>> get watchAllQuestions;
 

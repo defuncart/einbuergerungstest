@@ -22,6 +22,34 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   }
 
   @override
+  List<Question> get questionsForQuiz {
+    const numberQuestions = 33;
+    final questions = <Question>[];
+
+    var notSeen = allQuestions.where((q) => !q.hasBeenSeen);
+    if (notSeen.length >= numberQuestions) {
+      notSeen = notSeen.toList()..shuffle();
+      return notSeen.take(numberQuestions).toList();
+    }
+    questions.addAll(notSeen);
+
+    final difficult = allQuestions.where((q) => q.wasAnsweredIncorrectly);
+    questions.addAll(difficult);
+    if (questions.length >= numberQuestions) {
+      return questions.take(numberQuestions).toList();
+    }
+
+    final numberRemainingQuestions = numberQuestions - questions.length;
+    final remainingQuestions = allQuestions.where((q) => !questions.contains(q));
+    remainingQuestions.toList().shuffle();
+    remainingQuestions.take(numberRemainingQuestions);
+
+    questions.addAll(remainingQuestions);
+    questions.shuffle();
+    return questions.take(numberQuestions).toList();
+  }
+
+  @override
   List<Question> get allQuestions => _box.values.toList();
 
   @override
