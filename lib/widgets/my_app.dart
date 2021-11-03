@@ -1,6 +1,8 @@
 import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/state/state.dart';
 import 'package:einbuergerungstest/widgets/home_screen/home_screen.dart';
+import 'package:einbuergerungstest/widgets/quiz_screen/quiz_screen.dart';
+import 'package:einbuergerungstest/widgets/results_screen/results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -63,7 +65,12 @@ class MyAppContent extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.delegate.supportedLocales,
-        home: const HomeScreen(),
+        initialRoute: HomeScreen.routeName,
+        routes: {
+          HomeScreen.routeName: (_) => const HomeScreen(),
+          QuizScreen.routeName: (_) => const QuizScreen(),
+          ResultsScreen.routeName: (_) => const ResultsScreen(),
+        },
       ),
     );
   }
