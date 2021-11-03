@@ -1,5 +1,12 @@
 key;description;de
+generalYes;Yes text;Ja
+generalNo;No text;Nein
+generalContinue;Continue text;Fortfahren
 homeScreenDashboardLabel;Label for dashboard item;Dashboard
 homeScreenFavoritesLabel;Label for favorites item;Merkliste
 homeScreenTipsLabel;Label for tips item;Tipps
 homeScreenTestButtonText;Button text for test FAB;Test
+quitQuizConfirmationDialogTitle;Text for the title when confirm quitting the test;Bist du sicher, dass du den Test beeneden möchten?
+quitQuizConfirmationDialogDescription;Text for the description when confirming quitting the test;Alle Fortschritte gehen verloren.
+resultsScreenPassedText;Display text for x/y when passed;Du hast {numCorrect} von {total} Fragen richtig geantwortet und den Einbürgerungstest bestanden!
+resultsScreenFailedText;Display text for x/y when passed;Du hast nur {numCorrect} von {total} Fragen richtig geantwortet. Leider hast du den Einbürgerungstest nicht bestanden.

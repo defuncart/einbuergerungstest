@@ -2,9 +2,12 @@ import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/dashboard_tab.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/favorites_tab.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/tips_tab.dart';
+import 'package:einbuergerungstest/widgets/quiz_screen/quiz_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/';
+
   const HomeScreen({
     Key? key,
   }) : super(key: key);
@@ -62,9 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ? BottomNavigationBar(
               currentIndex: _currentIndex,
               onTap: (newIndex) => setState(() => _currentIndex = newIndex),
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              type: BottomNavigationBarType.fixed,
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(_currentIndex == 0 ? Icons.dashboard : Icons.dashboard_outlined),
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           : null,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Navigator.of(context).pushNamed(QuizScreen.routeName),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
