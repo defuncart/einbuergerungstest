@@ -17,10 +17,6 @@ class _QuestionFavoriteButtonState extends State<QuestionFavoriteButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      splashRadius: null,
-      splashColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      highlightColor: Colors.transparent,
       onPressed: () {
         widget.question.isFavorite = !widget.question.isFavorite;
         setState(() {});

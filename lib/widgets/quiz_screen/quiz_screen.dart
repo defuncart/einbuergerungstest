@@ -64,18 +64,10 @@ class QuizScreenContent extends StatelessWidget {
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(false),
                     child: Text(AppLocalizations.of(context).generalNo),
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.black54),
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(true),
                     child: Text(AppLocalizations.of(context).generalYes),
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.black54),
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),
                   ),
                 ],
               ),
@@ -188,10 +180,6 @@ class AnswerButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Text(answer),
-      ),
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all(Colors.black54),
-        overlayColor: MaterialStateProperty.all(Colors.transparent),
       ),
     );
   }

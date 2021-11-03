@@ -65,6 +65,60 @@ class MyAppContent extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.delegate.supportedLocales,
+        theme: ThemeData.light().copyWith(
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hintColor: Colors.transparent,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black54,
+          ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.black,
+          ),
+          navigationRailTheme: const NavigationRailThemeData(
+            backgroundColor: Colors.transparent,
+            selectedIconTheme: IconThemeData(
+              color: Colors.black54,
+            ),
+            selectedLabelTextStyle: TextStyle(
+              color: Colors.black87,
+            ),
+            unselectedIconTheme: IconThemeData(
+              color: Colors.black54,
+            ),
+            unselectedLabelTextStyle: TextStyle(
+              color: Colors.black54,
+            ),
+          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            showSelectedLabels: false,
+            selectedItemColor: Colors.black54,
+            showUnselectedLabels: false,
+            unselectedItemColor: Colors.black26,
+            type: BottomNavigationBarType.fixed,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.black),
+              shadowColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
+            ),
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.black87),
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
+            ),
+          ),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.black87),
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
+            ),
+          ),
+        ),
         initialRoute: HomeScreen.routeName,
         routes: {
           HomeScreen.routeName: (_) => const HomeScreen(),

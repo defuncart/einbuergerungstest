@@ -65,9 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ? BottomNavigationBar(
               currentIndex: _currentIndex,
               onTap: (newIndex) => setState(() => _currentIndex = newIndex),
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              type: BottomNavigationBarType.fixed,
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(_currentIndex == 0 ? Icons.dashboard : Icons.dashboard_outlined),

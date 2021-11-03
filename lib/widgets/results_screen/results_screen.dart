@@ -47,11 +47,6 @@ class ResultsScreen extends StatelessWidget {
                 child: Text(
                   AppLocalizations.of(context).generalContinue,
                 ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.black),
-                  shadowColor: MaterialStateProperty.all(Colors.transparent),
-                  overlayColor: MaterialStateProperty.all(Colors.transparent),
-                ),
               ),
             ],
           ),
