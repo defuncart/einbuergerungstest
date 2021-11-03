@@ -19,14 +19,30 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
+  static String m0(numCorrect, total) =>
+      "Du hast nur ${numCorrect} von ${total} Fragen richtig geantwortet. Leider hast du den Einbürgerungstest nicht bestanden.";
+
+  static String m1(numCorrect, total) =>
+      "Du hast ${numCorrect} von ${total} Fragen richtig geantwortet und den Einbürgerungstest bestanden!";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "generalContinue": MessageLookupByLibrary.simpleMessage("Fortfahren"),
+        "generalNo": MessageLookupByLibrary.simpleMessage("Nein"),
+        "generalYes": MessageLookupByLibrary.simpleMessage("Ja"),
         "homeScreenDashboardLabel":
             MessageLookupByLibrary.simpleMessage("Dashboard"),
         "homeScreenFavoritesLabel":
             MessageLookupByLibrary.simpleMessage("Merkliste"),
         "homeScreenTestButtonText":
             MessageLookupByLibrary.simpleMessage("Test"),
-        "homeScreenTipsLabel": MessageLookupByLibrary.simpleMessage("Tipps")
+        "homeScreenTipsLabel": MessageLookupByLibrary.simpleMessage("Tipps"),
+        "quitQuizConfirmationDialogDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Alle Fortschritte gehen verloren."),
+        "quitQuizConfirmationDialogTitle": MessageLookupByLibrary.simpleMessage(
+            "Bist du sicher, dass du den Test beeneden möchten?"),
+        "resultsScreenFailedText": m0,
+        "resultsScreenPassedText": m1
       };
 }
