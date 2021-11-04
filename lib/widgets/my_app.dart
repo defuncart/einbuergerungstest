@@ -32,6 +32,7 @@ class _MyAppState extends ConsumerState<MyApp> {
     Hive.init(dir);
 
     await ref.read(questionDatabaseProvider).initialize();
+    await ref.read(resultsDatabaseProvider).initialize();
 
     setState(() => _isInitialized = true);
   }
