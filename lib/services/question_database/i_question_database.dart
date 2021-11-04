@@ -25,6 +25,12 @@ abstract class IQuestionDatabase {
   /// Returns a stream of user favorites
   Stream<List<Question>> get watchFavorites;
 
+  /// Returns the questions which user at least once incorrectly answered (sorted by percentage then attempts)
+  List<Question> get difficult;
+
+  /// Returns a stream of user difficult questions
+  Stream<List<Question>> get watchDifficult;
+
   /// Initializes the database
   Future<void> initialize();
 

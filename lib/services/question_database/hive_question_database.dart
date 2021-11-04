@@ -53,13 +53,20 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   List<Question> get allQuestions => _box.values.toList();
 
   @override
-  Stream<List<Question>> get watchAllQuestions => _box.watch().map((event) => allQuestions);
+  Stream<List<Question>> get watchAllQuestions => _box.watch().map((_) => allQuestions);
 
   @override
-  List<Question> get favorites => allQuestions.where((element) => element.isFavorite).toList();
+  List<Question> get favorites => allQuestions.where((q) => q.isFavorite).toList();
 
   @override
-  Stream<List<Question>> get watchFavorites => _box.watch().map((event) => favorites);
+  Stream<List<Question>> get watchFavorites => _box.watch().map((_) => favorites);
+
+  @override
+  List<Question> get difficult => allQuestions.where((q) => q.wasAnsweredIncorrectly).toList()
+    ..sort((a, b) => '${1 - b.correctPercentage}-${b.attempts}'.compareTo('${1 - a.correctPercentage}-${a.attempts}'));
+
+  @override
+  Stream<List<Question>> get watchDifficult => _box.watch().map((_) => difficult);
 
   @override
   Future<void> initialize() async {
