@@ -8,23 +8,27 @@ class QuestionsList extends StatelessWidget {
     required this.questions,
     this.showQuestionNumber = false,
     this.shouldReduceOpacitySeenQuestion = false,
+    this.showStats = false,
     Key? key,
   }) : super(key: key);
 
   final List<Question> questions;
   final bool showQuestionNumber;
   final bool shouldReduceOpacitySeenQuestion;
+  final bool showStats;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: ListView.builder(
+        shrinkWrap: true,
         itemCount: questions.length,
         itemBuilder: (context, index) => QuestionTile(
           question: questions[index],
           questionNumber: showQuestionNumber ? index + 1 : null,
           shouldReduceOpacitySeenQuestion: shouldReduceOpacitySeenQuestion,
+          showStats: showStats,
         ),
       ),
     );
@@ -36,12 +40,14 @@ class QuestionTile extends StatelessWidget {
     required this.question,
     this.questionNumber,
     this.shouldReduceOpacitySeenQuestion = false,
+    this.showStats = false,
     Key? key,
   }) : super(key: key);
 
   final Question question;
   final int? questionNumber;
   final bool shouldReduceOpacitySeenQuestion;
+  final bool showStats;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +56,11 @@ class QuestionTile extends StatelessWidget {
       child: ListTile(
         minLeadingWidth: 20,
         title: Text('${questionNumber != null ? '$questionNumber. ' : ''}${question.question}'),
-        trailing: QuestionFavoriteButton(
-          question: question,
-        ),
+        trailing: showStats
+            ? Text('${question.timesCorrect} / ${question.attempts}')
+            : QuestionFavoriteButton(
+                question: question,
+              ),
         onTap: () => QuestionPopover.show(
           context,
           question: question,
