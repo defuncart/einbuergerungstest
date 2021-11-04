@@ -109,7 +109,7 @@ class HomeScreenContent extends StatelessWidget {
           case 1:
             return const FavoritesTabConsumer();
           case 2:
-            return const TipsTab();
+            return const TipsTabConsumer();
           default:
             return const DashboardTabConsumer();
         }
