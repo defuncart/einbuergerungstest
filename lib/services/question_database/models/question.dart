@@ -81,6 +81,9 @@ class Question extends HiveObject {
   /// If the question has previously been incorrectly answered
   bool get wasAnsweredIncorrectly => _timesCorrect < _attempts;
 
+  /// A percentage from 0 to 1 of how often the question has been correctly answered
+  double get correctPercentage => _timesCorrect / attempts;
+
   /// Updates the progress
   void updateProgress({required bool answeredCorrectly}) {
     _attempts++;
