@@ -5,6 +5,7 @@ generalContinue;Continue text;Fortfahren
 homeScreenDashboardLabel;Label for dashboard item;Dashboard
 homeScreenFavoritesLabel;Label for favorites item;Merkliste
 homeScreenTipsLabel;Label for tips item;Tipps
+homeScreenHistoryLabel;Label for history item;Verlauf
 homeScreenTestButtonText;Button text for test FAB;Test
 quitQuizConfirmationDialogTitle;Text for the title when confirm quitting the test;Bist du sicher, dass du den Test beeneden möchten?
 quitQuizConfirmationDialogDescription;Text for the description when confirming quitting the test;Alle Fortschritte gehen verloren.

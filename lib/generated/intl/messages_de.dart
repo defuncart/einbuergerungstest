@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dashboard"),
         "homeScreenFavoritesLabel":
             MessageLookupByLibrary.simpleMessage("Merkliste"),
+        "homeScreenHistoryLabel":
+            MessageLookupByLibrary.simpleMessage("Verlauf"),
         "homeScreenTestButtonText":
             MessageLookupByLibrary.simpleMessage("Test"),
         "homeScreenTipsLabel": MessageLookupByLibrary.simpleMessage("Tipps"),

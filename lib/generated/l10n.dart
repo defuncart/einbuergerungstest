@@ -51,12 +51,12 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `Ja`
-  String get generalYes {
+  /// `Fortfahren`
+  String get generalContinue {
     return Intl.message(
-      'Ja',
-      name: 'generalYes',
-      desc: 'Yes text',
+      'Fortfahren',
+      name: 'generalContinue',
+      desc: 'Continue text',
       args: [],
     );
   }
@@ -71,12 +71,12 @@ class AppLocalizations {
     );
   }
 
-  /// `Fortfahren`
-  String get generalContinue {
+  /// `Ja`
+  String get generalYes {
     return Intl.message(
-      'Fortfahren',
-      name: 'generalContinue',
-      desc: 'Continue text',
+      'Ja',
+      name: 'generalYes',
+      desc: 'Yes text',
       args: [],
     );
   }
@@ -101,12 +101,12 @@ class AppLocalizations {
     );
   }
 
-  /// `Tipps`
-  String get homeScreenTipsLabel {
+  /// `Verlauf`
+  String get homeScreenHistoryLabel {
     return Intl.message(
-      'Tipps',
-      name: 'homeScreenTipsLabel',
-      desc: 'Label for tips item',
+      'Verlauf',
+      name: 'homeScreenHistoryLabel',
+      desc: 'Label for history item',
       args: [],
     );
   }
@@ -121,12 +121,12 @@ class AppLocalizations {
     );
   }
 
-  /// `Bist du sicher, dass du den Test beeneden möchten?`
-  String get quitQuizConfirmationDialogTitle {
+  /// `Tipps`
+  String get homeScreenTipsLabel {
     return Intl.message(
-      'Bist du sicher, dass du den Test beeneden möchten?',
-      name: 'quitQuizConfirmationDialogTitle',
-      desc: 'Text for the title when confirm quitting the test',
+      'Tipps',
+      name: 'homeScreenTipsLabel',
+      desc: 'Label for tips item',
       args: [],
     );
   }
@@ -141,13 +141,13 @@ class AppLocalizations {
     );
   }
 
-  /// `Du hast {numCorrect} von {total} Fragen richtig geantwortet und den Einbürgerungstest bestanden!`
-  String resultsScreenPassedText(Object numCorrect, Object total) {
+  /// `Bist du sicher, dass du den Test beeneden möchten?`
+  String get quitQuizConfirmationDialogTitle {
     return Intl.message(
-      'Du hast $numCorrect von $total Fragen richtig geantwortet und den Einbürgerungstest bestanden!',
-      name: 'resultsScreenPassedText',
-      desc: 'Display text for x/y when passed',
-      args: [numCorrect, total],
+      'Bist du sicher, dass du den Test beeneden möchten?',
+      name: 'quitQuizConfirmationDialogTitle',
+      desc: 'Text for the title when confirm quitting the test',
+      args: [],
     );
   }
 
@@ -156,6 +156,16 @@ class AppLocalizations {
     return Intl.message(
       'Du hast nur $numCorrect von $total Fragen richtig geantwortet. Leider hast du den Einbürgerungstest nicht bestanden.',
       name: 'resultsScreenFailedText',
+      desc: 'Display text for x/y when passed',
+      args: [numCorrect, total],
+    );
+  }
+
+  /// `Du hast {numCorrect} von {total} Fragen richtig geantwortet und den Einbürgerungstest bestanden!`
+  String resultsScreenPassedText(Object numCorrect, Object total) {
+    return Intl.message(
+      'Du hast $numCorrect von $total Fragen richtig geantwortet und den Einbürgerungstest bestanden!',
+      name: 'resultsScreenPassedText',
       desc: 'Display text for x/y when passed',
       args: [numCorrect, total],
     );
