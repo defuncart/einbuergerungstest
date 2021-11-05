@@ -81,6 +81,16 @@ class AppLocalizations {
     );
   }
 
+  /// `Keine abgeschlossene Tests gefunden `
+  String get historyTabEmptyStateLabel {
+    return Intl.message(
+      'Keine abgeschlossene Tests gefunden ',
+      name: 'historyTabEmptyStateLabel',
+      desc: 'Label for empty state',
+      args: [],
+    );
+  }
+
   /// `Dashboard`
   String get homeScreenDashboardLabel {
     return Intl.message(

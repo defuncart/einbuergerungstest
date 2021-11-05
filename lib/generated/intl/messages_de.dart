@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "generalContinue": MessageLookupByLibrary.simpleMessage("Fortfahren"),
         "generalNo": MessageLookupByLibrary.simpleMessage("Nein"),
         "generalYes": MessageLookupByLibrary.simpleMessage("Ja"),
+        "historyTabEmptyStateLabel": MessageLookupByLibrary.simpleMessage(
+            "Keine abgeschlossene Tests gefunden "),
         "homeScreenDashboardLabel":
             MessageLookupByLibrary.simpleMessage("Dashboard"),
         "homeScreenFavoritesLabel":

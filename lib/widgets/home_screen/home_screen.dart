@@ -121,7 +121,7 @@ class HomeScreenContent extends StatelessWidget {
           case 2:
             return const TipsTabConsumer();
           case 3:
-            return const HistoryTab();
+            return const HistoryTabConsumer();
           default:
             return const DashboardTabConsumer();
         }
