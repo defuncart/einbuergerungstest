@@ -10,7 +10,7 @@ dart pub global activate arb_utils
 dart run arb_generator
 
 # sort arbs
-pub global run arb_utils:sort assets_dev/l10n/intl_de.arb
+dart pub global run arb_utils:sort assets_dev/l10n/intl_de.arb
 
 # generate localization delegates
 flutter pub run intl_utils:generate
