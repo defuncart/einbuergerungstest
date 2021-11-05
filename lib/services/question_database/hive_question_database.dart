@@ -13,15 +13,6 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   static const _boxName = 'questions';
 
   @override
-  Question getQuestion(String id) {
-    if (!_box.containsKey(id)) {
-      throw ArgumentError('No question for $id found');
-    }
-
-    return _box.get(id)!;
-  }
-
-  @override
   List<Question> get questionsForQuiz {
     const numberQuestions = 33;
     final questions = <Question>[];
@@ -50,16 +41,28 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   }
 
   @override
+  List<Question> questionsById(List<String> ids) => ids.map(_getQuestion).toList();
+
+  Question _getQuestion(String id) => allQuestions.firstWhere((q) => q.id == id);
+
+  @override
   List<Question> get allQuestions => _box.values.toList();
 
   @override
-  Stream<List<Question>> get watchAllQuestions => _box.watch().map((event) => allQuestions);
+  Stream<List<Question>> get watchAllQuestions => _box.watch().map((_) => allQuestions);
 
   @override
-  List<Question> get favorites => allQuestions.where((element) => element.isFavorite).toList();
+  List<Question> get favorites => allQuestions.where((q) => q.isFavorite).toList();
 
   @override
-  Stream<List<Question>> get watchFavorites => _box.watch().map((event) => favorites);
+  Stream<List<Question>> get watchFavorites => _box.watch().map((_) => favorites);
+
+  @override
+  List<Question> get difficult => allQuestions.where((q) => q.wasAnsweredIncorrectly).toList()
+    ..sort((a, b) => '${1 - b.correctPercentage}-${b.attempts}'.compareTo('${1 - a.correctPercentage}-${a.attempts}'));
+
+  @override
+  Stream<List<Question>> get watchDifficult => _box.watch().map((_) => difficult);
 
   @override
   Future<void> initialize() async {

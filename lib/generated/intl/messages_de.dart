@@ -27,13 +27,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "generalContinue": MessageLookupByLibrary.simpleMessage("Fortfahren"),
+        "favoritesTabEmptyStateLabel": MessageLookupByLibrary.simpleMessage(
+            "Füge Fragen zur Merkliste hinzu!"),
         "generalNo": MessageLookupByLibrary.simpleMessage("Nein"),
         "generalYes": MessageLookupByLibrary.simpleMessage("Ja"),
+        "historyTabEmptyStateLabel": MessageLookupByLibrary.simpleMessage(
+            "Keine abgeschlossene Tests gefunden."),
         "homeScreenDashboardLabel":
             MessageLookupByLibrary.simpleMessage("Dashboard"),
         "homeScreenFavoritesLabel":
             MessageLookupByLibrary.simpleMessage("Merkliste"),
+        "homeScreenHistoryLabel":
+            MessageLookupByLibrary.simpleMessage("Verlauf"),
         "homeScreenTestButtonText":
             MessageLookupByLibrary.simpleMessage("Test"),
         "homeScreenTipsLabel": MessageLookupByLibrary.simpleMessage("Tipps"),
@@ -43,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quitQuizConfirmationDialogTitle": MessageLookupByLibrary.simpleMessage(
             "Bist du sicher, dass du den Test beeneden möchten?"),
         "resultsScreenFailedText": m0,
-        "resultsScreenPassedText": m1
+        "resultsScreenPassedText": m1,
+        "tipsTabEmptyStateLabel": MessageLookupByLibrary.simpleMessage(
+            "Keine falsche beantwortete Fragen gefunden.")
       };
 }

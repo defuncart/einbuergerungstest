@@ -1,3 +1,4 @@
+import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/services/question_database/models/question.dart';
 import 'package:einbuergerungstest/state/state.dart';
 import 'package:einbuergerungstest/widgets/common/questions_list.dart';
@@ -28,8 +29,12 @@ class FavoritesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return QuestionsList(
-      questions: questions,
-    );
+    return questions.isNotEmpty
+        ? QuestionsList(
+            questions: questions,
+          )
+        : Center(
+            child: Text(AppLocalizations.of(context).favoritesTabEmptyStateLabel),
+          );
   }
 }

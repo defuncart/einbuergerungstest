@@ -32,6 +32,7 @@ class _MyAppState extends ConsumerState<MyApp> {
     Hive.init(dir);
 
     await ref.read(questionDatabaseProvider).initialize();
+    await ref.read(resultsDatabaseProvider).initialize();
 
     setState(() => _isInitialized = true);
   }
@@ -76,6 +77,10 @@ class MyAppContent extends StatelessWidget {
           ),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+          ),
+          iconTheme: const IconThemeData(
+            color: Colors.black54,
           ),
           navigationRailTheme: const NavigationRailThemeData(
             backgroundColor: Colors.transparent,
@@ -99,12 +104,8 @@ class MyAppContent extends StatelessWidget {
             unselectedItemColor: Colors.black26,
             type: BottomNavigationBarType.fixed,
           ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              shadowColor: MaterialStateProperty.all(Colors.transparent),
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
-            ),
+          colorScheme: const ColorScheme.light().copyWith(
+            secondary: Colors.black26,
           ),
           textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(

@@ -1,6 +1,7 @@
 import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/dashboard_tab.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/favorites_tab.dart';
+import 'package:einbuergerungstest/widgets/home_screen/tabs/history_tab.dart';
 import 'package:einbuergerungstest/widgets/home_screen/tabs/tips_tab.dart';
 import 'package:einbuergerungstest/widgets/quiz_screen/quiz_screen.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         selectedIcon: const Icon(Icons.lightbulb),
                         label: Text(AppLocalizations.of(context).homeScreenTipsLabel),
                       ),
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.history_outlined),
+                        selectedIcon: const Icon(Icons.history),
+                        label: Text(AppLocalizations.of(context).homeScreenHistoryLabel),
+                      ),
                     ],
                   ),
                   const VerticalDivider(thickness: 1, width: 1),
@@ -77,6 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBarItem(
                   icon: Icon(_currentIndex == 2 ? Icons.lightbulb : Icons.lightbulb_outline),
                   label: AppLocalizations.of(context).homeScreenTipsLabel,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(_currentIndex == 3 ? Icons.history : Icons.history_outlined),
+                  label: AppLocalizations.of(context).homeScreenHistoryLabel,
                 ),
               ],
             )
@@ -109,7 +119,9 @@ class HomeScreenContent extends StatelessWidget {
           case 1:
             return const FavoritesTabConsumer();
           case 2:
-            return const TipsTab();
+            return const TipsTabConsumer();
+          case 3:
+            return const HistoryTabConsumer();
           default:
             return const DashboardTabConsumer();
         }
