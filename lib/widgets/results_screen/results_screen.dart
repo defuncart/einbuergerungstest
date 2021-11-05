@@ -2,6 +2,7 @@ import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/services/question_database/models/question.dart';
 import 'package:einbuergerungstest/services/results_database/models/quiz_result.dart';
 import 'package:einbuergerungstest/state/state.dart';
+import 'package:einbuergerungstest/widgets/common/question_popover.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -53,34 +54,42 @@ class ResultsScreenContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                result.quizPassed
-                    ? AppLocalizations.of(context).resultsScreenPassedText(
-                        result.numberCorrect,
-                        result.numberQuestions,
-                      )
-                    : AppLocalizations.of(context).resultsScreenFailedText(
-                        result.numberCorrect,
-                        result.numberQuestions,
-                      ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(
-                  AppLocalizations.of(context).generalContinue,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.close),
+        ),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: [
+          Text(
+            result.quizPassed
+                ? AppLocalizations.of(context).resultsScreenPassedText(
+                    result.numberCorrect,
+                    result.numberQuestions,
+                  )
+                : AppLocalizations.of(context).resultsScreenFailedText(
+                    result.numberCorrect,
+                    result.numberQuestions,
+                  ),
+          ),
+          const SizedBox(height: 8),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: result.numberQuestions,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: QuestionPanel(
+                  question: questions[index],
+                  answerIndex: result.qaPairs[index].answerIndex,
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

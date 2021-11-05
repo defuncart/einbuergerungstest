@@ -56,12 +56,12 @@ class QuestionPanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Wrap(
-            runSpacing: 16,
+            runSpacing: 8,
             children: [
               if (question.hasImage)
                 Image.asset(
                   question.imagePath!,
-                  height: constraints.maxHeight / 6,
+                  height: constraints.maxHeight == double.infinity ? 200 : constraints.maxHeight / 6,
                 ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,15 +74,19 @@ class QuestionPanel extends StatelessWidget {
                           ),
                     ),
                   ),
-                  QuestionFavoriteButton(
-                    question: question,
-                    alignment: Alignment.topRight,
+                  SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: QuestionFavoriteButton(
+                      question: question,
+                      alignment: Alignment.topRight,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(height: question.hasImage ? 16 : 0),
+          const SizedBox(height: 8),
           for (var i = 0; i < question.answers.length; i++) ...[
             if (i != 0) const SizedBox(height: 2),
             Text(
