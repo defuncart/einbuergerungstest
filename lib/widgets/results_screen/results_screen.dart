@@ -2,7 +2,7 @@ import 'package:einbuergerungstest/generated/l10n.dart';
 import 'package:einbuergerungstest/services/question_database/models/question.dart';
 import 'package:einbuergerungstest/services/results_database/models/quiz_result.dart';
 import 'package:einbuergerungstest/state/state.dart';
-import 'package:einbuergerungstest/widgets/common/question_popover.dart';
+import 'package:einbuergerungstest/widgets/common/question_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
