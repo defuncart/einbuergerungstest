@@ -2,19 +2,17 @@ import 'package:einbuergerungstest/services/question_database/models/question.da
 
 /// A database of questions
 abstract class IQuestionDatabase {
-  /// Returns a [Question] for [id]
-  ///
-  /// Throws if [id] does not exist
-  Question getQuestion(String id);
-
-  /// Returns all 310 questions
-  List<Question> get allQuestions;
-
   /// Returns questions for a quiz
   ///
   /// Firstly returns as many unseen questions, then as many difficult
   /// and finally the rest are random
   List<Question> get questionsForQuiz;
+
+  /// Returns a list of questions by [ids]
+  List<Question> questionsById(List<String> ids);
+
+  /// Returns all 310 questions
+  List<Question> get allQuestions;
 
   /// Returns a stream of all questions
   Stream<List<Question>> get watchAllQuestions;

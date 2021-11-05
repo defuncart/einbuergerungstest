@@ -13,15 +13,6 @@ class HiveQuestionDatabase implements IQuestionDatabase {
   static const _boxName = 'questions';
 
   @override
-  Question getQuestion(String id) {
-    if (!_box.containsKey(id)) {
-      throw ArgumentError('No question for $id found');
-    }
-
-    return _box.get(id)!;
-  }
-
-  @override
   List<Question> get questionsForQuiz {
     const numberQuestions = 33;
     final questions = <Question>[];
@@ -48,6 +39,11 @@ class HiveQuestionDatabase implements IQuestionDatabase {
     questions.shuffle();
     return questions.take(numberQuestions).toList();
   }
+
+  @override
+  List<Question> questionsById(List<String> ids) => ids.map(_getQuestion).toList();
+
+  Question _getQuestion(String id) => allQuestions.firstWhere((q) => q.id == id);
 
   @override
   List<Question> get allQuestions => _box.values.toList();
