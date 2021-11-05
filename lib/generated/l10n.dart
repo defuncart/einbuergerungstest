@@ -51,6 +51,16 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
+  /// `Füge Fragen zu der Merkliste hinzu!`
+  String get favoritesTabEmptyStateLabel {
+    return Intl.message(
+      'Füge Fragen zu der Merkliste hinzu!',
+      name: 'favoritesTabEmptyStateLabel',
+      desc: 'Label for empty state',
+      args: [],
+    );
+  }
+
   /// `Fortfahren`
   String get generalContinue {
     return Intl.message(
@@ -81,10 +91,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Keine abgeschlossene Tests gefunden `
+  /// `Keine abgeschlossene Tests gefunden.`
   String get historyTabEmptyStateLabel {
     return Intl.message(
-      'Keine abgeschlossene Tests gefunden ',
+      'Keine abgeschlossene Tests gefunden.',
       name: 'historyTabEmptyStateLabel',
       desc: 'Label for empty state',
       args: [],
@@ -178,6 +188,16 @@ class AppLocalizations {
       name: 'resultsScreenPassedText',
       desc: 'Display text for x/y when passed',
       args: [numCorrect, total],
+    );
+  }
+
+  /// `Keine falsche beantwortete Fragen gefunden.`
+  String get tipsTabEmptyStateLabel {
+    return Intl.message(
+      'Keine falsche beantwortete Fragen gefunden.',
+      name: 'tipsTabEmptyStateLabel',
+      desc: 'Label for empty state',
+      args: [],
     );
   }
 }
