@@ -22,7 +22,6 @@ class QuizViewModel extends ChangeNotifier {
 
   bool get isQuizFinished => _currentIndex >= _questions.length;
 
-  int get correctAnswers => _correctAnswers;
   var _correctAnswers = 0;
 
   String get currentQuestion => _currentQuestion.question;
@@ -37,6 +36,15 @@ class QuizViewModel extends ChangeNotifier {
     assert(isQuizFinished);
 
     return (_correctAnswers / numberQuestions) > 0.5;
+  }
+
+  final _qaPairs = <QAPair>[];
+
+  late QuizResult _result;
+  QuizResult get result {
+    assert(isQuizFinished);
+
+    return _result;
   }
 
   void answerCurrentQuestion(int index) {
@@ -58,10 +66,8 @@ class QuizViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  final _qaPairs = <QAPair>[];
-
   void _updateResults() {
-    final result = QuizResult(
+    _result = QuizResult(
       id: 'bla',
       qaPairs: _qaPairs,
       numberCorrect: _correctAnswers,

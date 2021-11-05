@@ -141,11 +141,7 @@ class QuizScreenContent extends StatelessWidget {
                                 if (viewModel.isQuizFinished) {
                                   Navigator.of(context).pushReplacementNamed(
                                     ResultsScreen.routeName,
-                                    arguments: ResultsScreenArguments(
-                                      numberCorrectAnswers: viewModel.correctAnswers,
-                                      numberQuestions: viewModel.numberQuestions,
-                                      hasPassedQuiz: viewModel.hasPassedQuiz,
-                                    ),
+                                    arguments: viewModel.result,
                                   );
                                 }
                               },
