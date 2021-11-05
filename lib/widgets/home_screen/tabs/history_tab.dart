@@ -4,6 +4,7 @@ import 'package:einbuergerungstest/state/state.dart';
 import 'package:einbuergerungstest/widgets/results_screen/results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class HistoryTabConsumer extends ConsumerWidget {
   const HistoryTabConsumer({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class HistoryTab extends StatelessWidget {
             itemCount: results.length,
             itemBuilder: (context, index) => ListTile(
               title: Text(
-                results[index].date.toString(),
+                DateFormat.yMMMMd().add_jm().format(results[index].date),
                 style: TextStyle(
                   color: results[index].quizPassed ? Colors.green : Colors.red,
                 ),
