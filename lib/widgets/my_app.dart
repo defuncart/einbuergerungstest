@@ -78,6 +78,9 @@ class MyAppContent extends StatelessWidget {
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             backgroundColor: Colors.black,
           ),
+          iconTheme: const IconThemeData(
+            color: Colors.black54,
+          ),
           navigationRailTheme: const NavigationRailThemeData(
             backgroundColor: Colors.transparent,
             selectedIconTheme: IconThemeData(

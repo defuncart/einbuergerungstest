@@ -41,44 +41,54 @@ class QuestionPopover extends StatelessWidget {
 class QuestionPanel extends StatelessWidget {
   const QuestionPanel({
     required this.question,
+    this.answerIndex,
     Key? key,
   }) : super(key: key);
 
   final Question question;
+  final int? answerIndex;
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: Theme.of(context).textTheme.headline5!,
-      child: Column(
+    return LayoutBuilder(
+      builder: (context, constraints) => Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Wrap(
+            runSpacing: 16,
             children: [
-              Expanded(
-                child: Text(question.question),
-              ),
-              QuestionFavoriteButton(
-                question: question,
+              if (question.hasImage)
+                Image.asset(
+                  question.imagePath!,
+                  height: constraints.maxHeight / 6,
+                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      question.question,
+                      style: DefaultTextStyle.of(context).style.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ),
+                  QuestionFavoriteButton(
+                    question: question,
+                    alignment: Alignment.topRight,
+                  ),
+                ],
               ),
             ],
           ),
-          if (question.hasImage)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Center(
-                child: Image.asset(question.imagePath!),
-              ),
-            ),
-          const SizedBox(height: 16),
+          SizedBox(height: question.hasImage ? 16 : 0),
           for (var i = 0; i < question.answers.length; i++) ...[
-            if (i != 0) const SizedBox(height: 4),
+            if (i != 0) const SizedBox(height: 2),
             Text(
               question.answers[i],
               style: TextStyle(
-                color: i == question.correctAnswerIndex ? Colors.green : null,
+                color: i == question.correctAnswerIndex ? Colors.green : (i == answerIndex ? Colors.red : null),
               ),
             ),
           ],
