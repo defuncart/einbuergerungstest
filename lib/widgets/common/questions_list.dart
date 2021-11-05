@@ -19,17 +19,15 @@ class QuestionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return ListView.builder(
+      shrinkWrap: true,
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: questions.length,
-        itemBuilder: (context, index) => QuestionTile(
-          question: questions[index],
-          questionNumber: showQuestionNumber ? index + 1 : null,
-          shouldReduceOpacitySeenQuestion: shouldReduceOpacitySeenQuestion,
-          showStats: showStats,
-        ),
+      itemCount: questions.length,
+      itemBuilder: (context, index) => QuestionTile(
+        question: questions[index],
+        questionNumber: showQuestionNumber ? index + 1 : null,
+        shouldReduceOpacitySeenQuestion: shouldReduceOpacitySeenQuestion,
+        showStats: showStats,
       ),
     );
   }

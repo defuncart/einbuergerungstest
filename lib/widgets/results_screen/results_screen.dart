@@ -41,6 +41,7 @@ class ResultsScreenConsumer extends ConsumerWidget {
   }
 }
 
+@visibleForTesting
 class ResultsScreenContent extends StatelessWidget {
   const ResultsScreenContent({
     required this.result,

@@ -61,16 +61,6 @@ class AppLocalizations {
     );
   }
 
-  /// `Fortfahren`
-  String get generalContinue {
-    return Intl.message(
-      'Fortfahren',
-      name: 'generalContinue',
-      desc: 'Continue text',
-      args: [],
-    );
-  }
-
   /// `Nein`
   String get generalNo {
     return Intl.message(

@@ -1,7 +1,6 @@
 key;description;de
 generalYes;Yes text;Ja
 generalNo;No text;Nein
-generalContinue;Continue text;Fortfahren
 homeScreenDashboardLabel;Label for dashboard item;Dashboard
 homeScreenFavoritesLabel;Label for favorites item;Merkliste
 homeScreenTipsLabel;Label for tips item;Tipps
