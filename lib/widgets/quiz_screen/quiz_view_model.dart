@@ -1,12 +1,16 @@
 import 'package:einbuergerungstest/services/question_database/models/question.dart';
+import 'package:einbuergerungstest/services/results_database/models/quiz_result.dart';
 import 'package:flutter/foundation.dart';
 
 class QuizViewModel extends ChangeNotifier {
   QuizViewModel({
     required List<Question> quesions,
-  }) : _questions = quesions;
+    required void Function(QuizResult) onSaveResult,
+  })  : _questions = quesions,
+        _onSaveResult = onSaveResult;
 
   final List<Question> _questions;
+  final void Function(QuizResult) _onSaveResult;
 
   int get numberQuestions => _questions.length;
 
@@ -44,8 +48,26 @@ class QuizViewModel extends ChangeNotifier {
       _correctAnswers++;
     }
 
+    _qaPairs.add(QAPair(questionId: _currentQuestion.id, answerIndex: index));
+
     _currentIndex++;
+    if (isQuizFinished) {
+      _updateResults();
+    }
 
     notifyListeners();
+  }
+
+  final _qaPairs = <QAPair>[];
+
+  void _updateResults() {
+    final result = QuizResult(
+      id: 'bla',
+      qaPairs: _qaPairs,
+      numberCorrect: _correctAnswers,
+      date: DateTime.now(),
+    );
+
+    _onSaveResult(result);
   }
 }

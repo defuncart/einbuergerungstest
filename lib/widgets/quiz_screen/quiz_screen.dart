@@ -33,6 +33,7 @@ class QuizScreenConsumer extends ConsumerWidget {
 final quizProvider = ChangeNotifierProvider.autoDispose<QuizViewModel>(
   (ref) => QuizViewModel(
     quesions: ref.read(questionDatabaseProvider).questionsForQuiz,
+    onSaveResult: (result) => ref.read(resultsDatabaseProvider).addResult(result),
   ),
 );
 
@@ -79,6 +80,7 @@ class QuizScreenContent extends StatelessWidget {
           },
           icon: const Icon(Icons.close),
         ),
+        centerTitle: true,
         title: Text('${viewModel.questionNumber} / ${viewModel.numberQuestions}'),
       ),
       body: OrientationBuilder(
