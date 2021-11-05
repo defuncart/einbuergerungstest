@@ -51,10 +51,10 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `Füge Fragen zu der Merkliste hinzu!`
+  /// `Füge Fragen zur Merkliste hinzu!`
   String get favoritesTabEmptyStateLabel {
     return Intl.message(
-      'Füge Fragen zu der Merkliste hinzu!',
+      'Füge Fragen zur Merkliste hinzu!',
       name: 'favoritesTabEmptyStateLabel',
       desc: 'Label for empty state',
       args: [],

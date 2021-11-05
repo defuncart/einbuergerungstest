@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "favoritesTabEmptyStateLabel": MessageLookupByLibrary.simpleMessage(
-            "Füge Fragen zu der Merkliste hinzu!"),
+            "Füge Fragen zur Merkliste hinzu!"),
         "generalContinue": MessageLookupByLibrary.simpleMessage("Fortfahren"),
         "generalNo": MessageLookupByLibrary.simpleMessage("Nein"),
         "generalYes": MessageLookupByLibrary.simpleMessage("Ja"),

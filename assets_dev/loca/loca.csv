@@ -7,7 +7,7 @@ homeScreenFavoritesLabel;Label for favorites item;Merkliste
 homeScreenTipsLabel;Label for tips item;Tipps
 homeScreenHistoryLabel;Label for history item;Verlauf
 homeScreenTestButtonText;Button text for test FAB;Test
-favoritesTabEmptyStateLabel;Label for empty state;Füge Fragen zu der Merkliste hinzu!
+favoritesTabEmptyStateLabel;Label for empty state;Füge Fragen zur Merkliste hinzu!
 tipsTabEmptyStateLabel;Label for empty state;Keine falsche beantwortete Fragen gefunden.
 historyTabEmptyStateLabel;Label for empty state;Keine abgeschlossene Tests gefunden.
 quitQuizConfirmationDialogTitle;Text for the title when confirm quitting the test;Bist du sicher, dass du den Test beeneden möchten?
