@@ -31,7 +31,7 @@ class QuestionPanel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Text(
+                    child: SelectableText(
                       question.question,
                       style: DefaultTextStyle.of(context).style.copyWith(
                             fontWeight: FontWeight.w600,
@@ -53,7 +53,7 @@ class QuestionPanel extends StatelessWidget {
           const SizedBox(height: 8),
           for (var i = 0; i < question.answers.length; i++) ...[
             if (i != 0) SizedBox(height: (DefaultTextStyle.of(context).style.fontSize ?? 16) / 4),
-            Text(
+            SelectableText(
               question.answers[i],
               style: TextStyle(
                 color: i == question.correctAnswerIndex ? Colors.green : (i == answerIndex ? Colors.red : null),
