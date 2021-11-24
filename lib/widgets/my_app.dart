@@ -113,11 +113,9 @@ class MyAppContent extends StatelessWidget {
               overlayColor: MaterialStateProperty.all(Colors.transparent),
             ),
           ),
-          outlinedButtonTheme: OutlinedButtonThemeData(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.black87),
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
-            ),
+          textSelectionTheme: const TextSelectionThemeData(
+            selectionColor: Colors.black26,
+            selectionHandleColor: Colors.black,
           ),
         ),
         initialRoute: HomeScreen.routeName,

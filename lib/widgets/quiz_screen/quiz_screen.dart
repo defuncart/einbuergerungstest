@@ -100,7 +100,7 @@ class QuizScreenContent extends StatelessWidget {
                           height: constraints.maxHeight / 3,
                         ),
                       ),
-                    Text(
+                    SelectableText(
                       viewModel.currentQuestion,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headline6,
@@ -117,7 +117,7 @@ class QuizScreenContent extends StatelessWidget {
                             ),
                           ),
                         Expanded(
-                          child: Text(
+                          child: SelectableText(
                             viewModel.currentQuestion,
                             style: Theme.of(context).textTheme.headline6,
                           ),
@@ -173,11 +173,23 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Text(answer),
+    return GestureDetector(
+      onTap: onPressed,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          padding: const EdgeInsets.all(4.0),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black38,
+            ),
+          ),
+          alignment: Alignment.center,
+          child: SelectableText(
+            answer,
+            onTap: onPressed,
+          ),
+        ),
       ),
     );
   }
