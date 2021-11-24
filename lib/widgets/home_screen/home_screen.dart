@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: MediaQuery.of(context).orientation == Orientation.landscape
             ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   NavigationRail(
                     selectedIndex: _currentIndex,
