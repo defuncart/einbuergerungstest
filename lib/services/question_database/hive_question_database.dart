@@ -27,6 +27,7 @@ class HiveQuestionDatabase implements IQuestionDatabase {
     final difficult = allQuestions.where((q) => q.wasAnsweredIncorrectly);
     questions.addAll(difficult);
     if (questions.length >= numberQuestions) {
+      questions.shuffle();
       return questions.take(numberQuestions).toList();
     }
 
