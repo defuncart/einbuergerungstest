@@ -17,15 +17,16 @@ class QuestionPanel extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) => Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Wrap(
             runSpacing: 8,
             children: [
               if (question.hasImage)
-                Image.asset(
-                  question.imagePath!,
-                  height: constraints.maxHeight == double.infinity ? 200 : constraints.maxHeight / 6,
+                Center(
+                  child: Image.asset(
+                    question.imagePath!,
+                    height: constraints.maxHeight == double.infinity ? 200 : constraints.maxHeight / 6,
+                  ),
                 ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +59,7 @@ class QuestionPanel extends StatelessWidget {
               style: TextStyle(
                 color: i == question.correctAnswerIndex ? Colors.green : (i == answerIndex ? Colors.red : null),
               ),
+              textAlign: TextAlign.center,
             ),
           ],
         ],
