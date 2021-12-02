@@ -187,6 +187,7 @@ class AnswerButton extends StatelessWidget {
           alignment: Alignment.center,
           child: SelectableText(
             answer,
+            textAlign: TextAlign.center,
             onTap: onPressed,
           ),
         ),
