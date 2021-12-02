@@ -4,8 +4,8 @@ import 'package:einbuergerungstest/services/question_database/models/question.da
 abstract class IQuestionDatabase {
   /// Returns questions for a quiz
   ///
-  /// Firstly returns as many unseen questions, then as many difficult
-  /// and finally the rest are random
+  /// Firstly returns as many unseen questions,
+  /// then a mixture of difficult and random
   List<Question> get questionsForQuiz;
 
   /// Returns a list of questions by [ids]

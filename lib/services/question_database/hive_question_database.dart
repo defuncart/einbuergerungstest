@@ -17,6 +17,7 @@ class HiveQuestionDatabase implements IQuestionDatabase {
     const numberQuestions = 33;
     final questions = <Question>[];
 
+    // take as many non-seen questions as possible
     var notSeen = allQuestions.where((q) => !q.hasBeenSeen);
     if (notSeen.length >= numberQuestions) {
       notSeen = notSeen.toList()..shuffle();
@@ -24,21 +25,23 @@ class HiveQuestionDatabase implements IQuestionDatabase {
     }
     questions.addAll(notSeen);
 
+    // take at most numberRemainingQuestions / 2 difficult questions
     final difficult = allQuestions.where((q) => q.wasAnsweredIncorrectly);
-    questions.addAll(difficult);
-    if (questions.length >= numberQuestions) {
-      questions.shuffle();
-      return questions.take(numberQuestions).toList();
-    }
+    difficult.toList().sort((a, b) => a.correctPercentage.compareTo(b.correctPercentage));
+    var numberRemainingQuestions = numberQuestions - questions.length;
+    final maxNumberDifficultQuestions = (numberRemainingQuestions * 0.5).floor();
+    questions.addAll(difficult.take(maxNumberDifficultQuestions));
 
-    final numberRemainingQuestions = numberQuestions - questions.length;
+    // randomly choose remaining
+    numberRemainingQuestions = numberQuestions - questions.length;
     final remainingQuestions = allQuestions.where((q) => !questions.contains(q));
     remainingQuestions.toList().shuffle();
-    remainingQuestions.take(numberRemainingQuestions);
+    questions.addAll(remainingQuestions.take(numberRemainingQuestions));
 
-    questions.addAll(remainingQuestions);
+    // finally shuffle and return
+    assert(questions.length == numberQuestions);
     questions.shuffle();
-    return questions.take(numberQuestions).toList();
+    return questions;
   }
 
   @override
